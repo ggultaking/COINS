@@ -1,4 +1,4 @@
-import { SEARCH_FILM, HIDE_UP,SHOW_BELOW } from "../constant";
+import { SEARCH_FILM, SHOW_UP,SHOW_BELOW } from "../constant";
 
 
 const initialState = {
@@ -14,16 +14,17 @@ const searchReducer = (state = initialState, action) => {
         ...state,
         films: action.payload,
       };
-      case HIDE_UP:
-        return{
-          ...state,
-          showUp:false,
-        
+      case SHOW_UP:
+       return{
+        ...state,
+        showUp:true,
+        showBelow:false,
         }
-        case SHOW_BELOW:
-          return{
-            ...state,
-            showBelow:true
+    case SHOW_BELOW:
+      return{
+        ...state,
+        showBelow:true,
+        showUp:false
           }
     default:
       return state;

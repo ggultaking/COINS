@@ -2,7 +2,7 @@ import React from 'react';
 import './MainPage.css';
 import SearchBox from '../../components/SearchBox/SearchBox';
 import Movies from '../../components/Coins/Coins';
-import Homepage from '../../components/Homepage/Homepage';
+
 
 const MainPage =()=> {
 
@@ -18,9 +18,7 @@ const MainPage =()=> {
                             <Movies />
                         </div>
                     </section>
-                    <aside className="main-page__favorites">
-                        <Homepage/>
-                    </aside>
+                  
                 </main>
             </div>
         );
