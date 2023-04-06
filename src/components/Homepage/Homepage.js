@@ -1,91 +1,53 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
-import { deleteFilmAction,deleteAllAction,createFavoriteList } from "../../redux/addFavorite/favoriteAction";
+import { useDispatch } from "react-redux";
+import { searchFilmAction } from "../../redux/searchFilm/searchAction";
 import "./Homepage.css";
-
 const Homepage = () => {
-  const dispatch = useDispatch();
+ const dispatch=useDispatch()
+  const [searchLine, setSearchLine] = useState("");
+  const searchLineChangeHandler = (e) => {
+    setSearchLine(e.target.value);
+  };
+  const searchBoxSubmitHandler = (e) => {
+    e.preventDefault();
+    fetch(`http://www.omdbapi.com/?s=${searchLine}&apikey=226bff17`)
+      .then((res) => res.json())
+      .then((data) => {
+        const searchResults = data.Search || []; // If data.Search is undefined, default to an empty array
 
-  const listName = useSelector(
-    (store) => store.favoriteReducer.favoriteListName
-  );
-  const favoriteFilms = useSelector(
-    (store) => store.favoriteReducer.FavoriteFilms
-  );
-  const [saveBtn, setsaveBtn] = useState("Сохранить список");
-  const [isClicked, setisClicked] = useState(false);
-  const deleteFavorite = (imdbID) => {
-    dispatch(deleteFilmAction({ imdbID }));
+        dispatch(searchFilmAction(searchResults));
+      });
   };
-  const deleteAll = () => {
-    dispatch(deleteAllAction());
-  };
-  const updateListName = (e) => {
-    const newListName = e.target.value;
-    dispatch(createFavoriteList(newListName));
-  };
-  const createFavorite = () => {
-    setsaveBtn("loading...");
-    setTimeout(() => {
-      setisClicked(true);
-    }, 300);
-  };
-  const enabled = listName && favoriteFilms.length > 0;
-  const isHave=favoriteFilms.length>0
+
   return (
-    <div className="favorites">
-      <input
-        value={listName}
-        className="favorites__name"
-        placeholder="Новый список"
-        onChange={updateListName}
-        disabled={isClicked}
-      />
-
-      {favoriteFilms.length > 0 && (
-        <ul>
-          {favoriteFilms?.map((item) => {
-            return (
-              <li className="favorite__film" key={item.imdbID}>
-                <p className="favorite__film-text">
-                  {item.Title} ({item.Year}){" "}
-                </p>
-
-                <button
-                  className="favorites__button"
-                  onClick={() => deleteFavorite(item.imdbID)}
-                  disabled={isClicked}
-                >
-                  X
-                </button>
-              </li>
-            );
-          })}
-        </ul>
-      )}
-
-      {!isClicked ? (
+    <div className="search-box">
+      <div className="search-box__header">
+        <p>Homepage</p>
+      </div>
+      <form className="search-box__form" onSubmit={searchBoxSubmitHandler}>
+        <label className="search-box__form-label">
+          Input field
+          <input
+            value={searchLine}
+            type="text"
+            className="search-box__form-input"
+            onChange={searchLineChangeHandler}
+          />
+        </label>
         <button
-          type="button"
-          className="favorites__save"
-          onClick={createFavorite}
-          disabled={!enabled}
+          type="submit"
+          className="search-box__form-submit"
+          disabled={!searchLine}
+          onClick={searchBoxSubmitHandler}
         >
-          {saveBtn}
+          Search
         </button>
-      ) : (
-        <Link to="/listpage">Перейти к списку</Link>
-      )}
+      </form>
+
       
-      <button
-        type="button"
-        className="favorites__delete"
-        onClick={deleteAll}
-        disabled={!isHave}
-      >
-        удалить все
-      </button>
+      <div className="coins-container">
+    
+              </div>
     </div>
   );
 };
