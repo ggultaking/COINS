@@ -1,5 +1,5 @@
 import React from "react";
-import "./CoinGroup.css";
+import "./GroupItem.css";
 import { useDispatch } from "react-redux";
 import { addFilmAction } from "../../redux/addFavorite/favoriteAction";
 
