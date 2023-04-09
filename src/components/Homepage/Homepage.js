@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import { Link } from "react-router-dom";
 import "./Homepage.css";
 import CoinGroup from "../CoinGroup/CoinGroup";
 const Homepage = () => {
@@ -40,6 +40,7 @@ const Homepage = () => {
       <div className="coins-container">
     <CoinGroup/>
       </div>
+      <Link  to="descriptionpage" >GO TO DESCRIPTION</Link>
     </div>
   );
 };
