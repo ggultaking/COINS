@@ -1,32 +1,59 @@
 import React from "react";
 import "./GroupItem.css";
-import { useDispatch } from "react-redux";
-import { addFilmAction } from "../../redux/addFavorite/favoriteAction";
+import Bullion from "../images/Bullion.svg"
+import Commemoorative from "../images/Commemorative.svg"
+import Exclusive from "../images/Exclusive.svg"
+import { Link } from "react-router-dom";
 
 const GroupItem = ({ GroupName,Image }) => {
 
-  const dispatch = useDispatch();
-  const addFilm = () => {
-    dispatch(addFilmAction({GroupName}));
 
-  };
+
 
   return (
     <article className="coin-group">
      
       <div className="coin-group__info">
-        <h3 className="coin-group_name">
-          {GroupName}
-        </h3>
-        <button
-          type="button"
+        <h1 className="coin-group_name">
+        Bullion coins
+        </h1>
+        <Link
+        to="listpage"
+          
+          className="coin-group__show-button"
+
+        >
+          Show all  &gt;
+        </Link>
+        <img className="coin-group__image" src={Bullion} alt={GroupName} />
+      </div>
+      <div className="coin-group__info">
+        <h1 className="coin-group_name">
+       Exclusive coins
+        </h1>
+        <Link
+               to="listpage"
           className="coin-group__show-button"
       
         >
           Show all  &gt;
-        </button>
-        <img className="coin-group__image" src={Image} alt={GroupName} />
+        </Link>
+        <img className="coin-group__image" src={Exclusive} alt={GroupName} />
       </div>
+      <div className="coin-group__info">
+        <h1 className="coin-group_name">
+        Commemoorative coins
+        </h1>
+        <Link
+                 to="listpage"
+          className="coin-group__show-button"
+
+        >
+          Show all  &gt;
+        </Link>
+        <img className="coin-group__image" src={Commemoorative} alt={GroupName} />
+      </div>
+  
     </article>
   );
 };

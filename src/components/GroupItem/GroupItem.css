@@ -1,4 +1,27 @@
 .coin-group__show-button{
-    border: none;
-    background-color: white;
+ 
+    margin-top: 20px;
+    font-size: 14px;
+    line-height: 16px;
+    font-weight: 300;
+}
+.coin-group{
+    display: flex;
+ 
+}
+.coin-group__info{
+    margin-right: 190px;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+}
+.coin-group__info h1{
+    font-size: 28px;
+    line-height: 28px;
+    font-weight: 500;
+}
+.coin-group__image{
+    margin-top: 10px;
+    width: 214px;
+    height: 214px;
 }

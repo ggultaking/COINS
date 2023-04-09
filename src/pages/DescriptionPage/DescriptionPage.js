@@ -1,33 +1,23 @@
 import React from "react";
 import "./DescriptionPage.css";
-import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 const DescriptionPage = () => {
-  
-  const movies = useSelector((store)=>store.favoriteReducer.FavoriteFilms);
-const listName=useSelector((store)=>store.favoriteReducer.favoriteListName)
-
   return (
-    <div className="list-page">
-      <h1 className="list-page__title">{listName}</h1>
-      <ul>
-        {movies.map((item) => {
-          console.log(movies);
-          return (
-            
-            <li key={item.imdbID}>
-              <a href={`https://www.imdb.com/title/${item.imdbID}/`}target="_blank" rel="noopener noreferrer">
-                {item.Title} ({item.Year})
-              </a>
-             
-            </li>
-          );
-        })}
-        <br/>
-        <br/>
-        <br/>
-        <Link to="/">Back to Home Page</Link>
-      </ul>
+    <div className="description-page">
+      <div className="description__image">
+<img alt="Coin front"></img>
+<img alt="Coin back"></img>
+      </div>
+      <div className="description__part">
+      <h1 className="description-page__title"></h1>
+      <p className="description-page__text__s"></p>
+      <p className="description-page__text__l"></p>
+      <div>
+
+      </div>
+      <Link to="/listpage">Back to list</Link>
+      </div>
+     
     </div>
   );
 };

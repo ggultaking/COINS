@@ -1,23 +1,13 @@
 import React from "react";
 import "./CoinGroup.css";
-
+import GroupItem from "../GroupItem/GroupItem";
 const CoinGroup = ({ name,image }) => {
 
 
 
   return (
     <article className="coin-group">
-     
-     <ul className="coins__groups">
-      {/* {groups&& groups.map((group) => (
-        <li className="group__item" key={group.id}>
-          <GroupItem id={group.id}
-            name={group.name}
-           
-            image={group.image} />
-        </li>
-      ))} */}
-    </ul>
+     <GroupItem/>
     </article>
   );
 };

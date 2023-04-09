@@ -1,7 +1,6 @@
 import React from 'react';
 import './MainPage.css';
 import Homepage from '../../components/Homepage/Homepage';
-import CoinGroup from '../../components/CoinGroup/CoinGroup';
 
 
 const MainPage =()=> {
@@ -14,9 +13,7 @@ const MainPage =()=> {
                         <div className="main-page__homepage">
                             <Homepage/>
                         </div>
-                     <div className="main-page__coingroup">
-                        <CoinGroup/>
-                     </div>
+                
                     </section>
                   
                 </main>
