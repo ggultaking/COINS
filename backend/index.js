@@ -1,26 +1,31 @@
-const express = require('express');
-const mysql = require('mysql');
-const app = express()
+const express = require("express");
+const mysql = require("mysql2");
+const app = express();
 const connection=mysql.createConnection({
-    host:'127.0.0.1',
+    host:'localhost',
     port:3306,
     user:'root',
     password:'Gulu19961211',
-database:'coins'
+database:'BOOTCAMP'
 });
-connection.connect();
-
+connection.connect((err)=>{
+    if(err){
+        console.log(err)
+    }
+});
+// app.get("/search", (req, res) => {
+//   res.json({ message: "123" });
+// });
 app.get('/search',(req,res)=>{
    var query=`Select id,groupname,image_url from coingroup where groupname LIKE '${req.query.q}%'`;
     connection.query(query,(err,result)=>{
         if(err){
             res.status(500).send('Error retrieving data from database');
             throw err;
-        } 
+        }
         res.json(result);
     });
 });
-app.listen(5000,()=>{
-    console.log(`Server listening on port 5000`)
-})
-
+app.listen(3003, () => {
+  console.log(`Server listening on port 3003`);
+});

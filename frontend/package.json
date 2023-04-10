@@ -1,7 +1,6 @@
 {
   "name": "bootcamp-m4-starter",
   "version": "0.1.0",
-  
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
@@ -39,5 +38,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:5000"
+  "proxy": "http://localhost:3003"
 }

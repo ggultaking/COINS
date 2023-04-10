@@ -11,7 +11,7 @@ const Homepage = () => {
   const dispatch=useDispatch();
   const coingroup = useSelector(state => state.coingroup);
 
-  const searchLineHandler = () => {
+const searchLineHandler = () => {
 fetch(`/search?query=${searchLine}`)
 .then(res=>res.json())
 .then(data=>dispatch(searchGroupAction(data)))
