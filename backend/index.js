@@ -20,7 +20,7 @@ app.get('/search',(req,res)=>{
         res.json(result);
     });
 });
-app.listen(port,()=>{
-    console.log(`Server listening on port ${port}`)
+app.listen(5000,()=>{
+    console.log(`Server listening on port 5000`)
 })
 
