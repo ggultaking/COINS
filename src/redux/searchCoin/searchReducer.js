@@ -1,18 +1,18 @@
-import { SEARCH_FILM, SHOW_UP,SHOW_BELOW } from "../constant";
+import { SEARCH_GROUP, SHOW_UP,SHOW_BELOW } from "../constant";
 
 
 const initialState = {
-  films: [],
+  coingroup: null,
   showUp:true,
   showBelow:false
 };
 
 const searchReducer = (state = initialState, action) => {
   switch (action.type) {
-    case SEARCH_FILM:
+    case SEARCH_GROUP:
       return {
         ...state,
-        films: action.payload,
+        coingroup: action.payload,
       };
       case SHOW_UP:
        return{

@@ -3,7 +3,7 @@ import { useSelector,useDispatch } from "react-redux";
 
 import "./ListPage.css";
 import { Link } from "react-router-dom";
-import { showBelowAction, showUpAction } from "../../redux/searchFilm/searchAction";
+import { showUpAction, showBelowAction } from "../../redux/searchCoin/searchAction";
 const ListPage = () => {
   const [searchLine, setSearchLine] = useState("");
   const searchLineChangeHandler = (e) => {

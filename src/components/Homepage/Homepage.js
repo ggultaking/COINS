@@ -1,15 +1,26 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import "./Homepage.css";
-import CoinGroup from "../CoinGroup/CoinGroup";
+import { useDispatch } from "react-redux";
+import { searchGroupAction } from "../../redux/searchCoin/searchAction";
+import GroupItem from "../GroupItem/GroupItem";
 const Homepage = () => {
 
   const [searchLine, setSearchLine] = useState("");
-  const searchLineChangeHandler = (e) => {
-    setSearchLine(e.target.value);
+  const dispatch=useDispatch();
+  const coingroup = useSelector(state => state.coingroup);
+
+  const searchLineHandler = () => {
+fetch(`/search?query=${searchLine}`)
+.then(res=>res.json())
+.then(data=>dispatch(searchGroupAction(data)))
+
   };
  
-  
+  const searchLineChangeHandler=(e)=>{
+    setSearchLine(e.target.value)
+  }
 
   return (
     <div className="search-box">
@@ -30,7 +41,7 @@ const Homepage = () => {
           type="submit"
           className="search-box__form-submit"
           disabled={!searchLine}
-        
+        onClick={searchLineHandler}
         >
           Search
         </button>
@@ -38,9 +49,16 @@ const Homepage = () => {
 
       
       <div className="coins-container">
-    <CoinGroup/>
+ {coingroup&&coingroup.map(res=>(
+  <GroupItem 
+    key={res.id}
+    id={res.id}
+    groupname={res.groupname}
+    image_url={res.image_url}
+  />
+ ))}  
       </div>
-      <Link  to="descriptionpage" >GO TO DESCRIPTION</Link>
+      <Link  to="/descriptionpage" >GO TO DESCRIPTION</Link>
     </div>
   );
 };

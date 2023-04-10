@@ -9,9 +9,9 @@ const DescriptionPage = () => {
         <img alt="Coin back"></img>
       </div>
       <div className="description__part">
-        <h1 className="description-page__title"></h1>
-        <p className="description-page__text__s"></p>
-        <p className="description-page__text__l"></p>
+        <h1 className="description-page__title">sd</h1>
+        <p className="description-page__text__s">sfs</p>
+        <p className="description-page__text__l">sfsf</p>
         <div className="description-list">
           <ul className="description-list__name">
             <li>Issuing Country</li>
