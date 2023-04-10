@@ -10,7 +10,7 @@ const GroupItem = ({ id, groupname, image_url }) => {
         <ul>
           <li>
             <h1 className="coin-group_name">{groupname}</h1>
-            <Link to="listpage" className="coin-group__show-button">
+            <Link to="/listpage" className="coin-group__show-button">
               Show all &gt;
             </Link>
             <img
