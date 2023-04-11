@@ -6,7 +6,7 @@ import "./Homepage.css";
 import { useDispatch } from "react-redux";
 import { searchGroupAction } from "../../redux/searchCoin/searchAction";
 import GroupItem from "../GroupItem/GroupItem";
-const Homepage = () => {
+
   const [searchLine, setSearchLine] = useState("");
   const dispatch = useDispatch();
   const coingroup = useSelector((state) => state.searchReducer.coingroup);
