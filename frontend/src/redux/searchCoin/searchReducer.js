@@ -2,7 +2,7 @@ import { SEARCH_GROUP, SHOW_UP,SHOW_BELOW } from "../constant";
 
 
 const initialState = {
-  coingroup: null,
+  coingroup: [],
   showUp:true,
   showBelow:false
 };

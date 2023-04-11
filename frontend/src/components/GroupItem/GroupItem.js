@@ -3,12 +3,14 @@ import "./GroupItem.css";
 
 import { Link } from "react-router-dom";
 
-const GroupItem = ({ id, groupname, image_url }) => {
+const GroupItem = ({  groupname, image_url }) => {
+
   return (
     <article className="coin-group">
       <div className="coin-group__info">
         <ul>
-          <li>
+          <li> 
+ 
             <h1 className="coin-group_name">{groupname}</h1>
             <Link to="/listpage" className="coin-group__show-button">
               Show all &gt;
@@ -18,9 +20,12 @@ const GroupItem = ({ id, groupname, image_url }) => {
               src={image_url}
               alt={groupname}
             />
+   
           </li>
         </ul>
+        
       </div>
+      
     </article>
   );
 };

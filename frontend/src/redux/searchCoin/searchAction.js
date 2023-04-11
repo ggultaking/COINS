@@ -1,4 +1,11 @@
-import { SEARCH_GROUP,SHOW_UP ,SHOW_BELOW} from "../constant";
+import { SEARCH_GROUP,SHOW_UP ,SHOW_BELOW,INIT_GROUPS} from "../constant";
+
+export const initializeGroupsAction = (groups) => {
+  return {
+    type: INIT_GROUPS,
+    payload: groups
+  };
+};
 
 export const searchGroupAction=(coingroup)=>({
     type:SEARCH_GROUP,
@@ -10,3 +17,4 @@ export const showUpAction=()=>({
 export const showBelowAction=()=>({
     type:SHOW_BELOW
 })
+
