@@ -22,6 +22,7 @@ app.get('/search',(req,res)=>{
             throw err;
         }
         res.json(result);
+    
     });
 });
 app.listen(5000, () => {

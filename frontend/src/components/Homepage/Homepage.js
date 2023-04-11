@@ -26,7 +26,7 @@ const Homepage = () => {
     setSearchLine(e.target.value);
   }
 
-  console.log(coingroup);
+
 
 
   return (
