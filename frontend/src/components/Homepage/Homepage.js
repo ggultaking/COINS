@@ -11,16 +11,23 @@ const Homepage = () => {
   const dispatch=useDispatch();
   const coingroup = useSelector(state => state.coingroup);
 
-const searchLineHandler = () => {
-fetch(`/search?query=${searchLine}`)
-.then(res=>res.json())
-.then(data=>dispatch(searchGroupAction(data)))
-
+  const searchLineHandler = () => {
+    fetch(`/search?query=${searchLine}`)
+      .then(res => res.json())
+      .then(data => {
+        dispatch(searchGroupAction(data));
+      })
+      .catch(error => {
+        console.log(error);
+      });
   };
  
-  const searchLineChangeHandler=(e)=>{
-    setSearchLine(e.target.value)
+  const searchLineChangeHandler = (e) => {
+    setSearchLine(e.target.value);
   }
+
+  console.log(coingroup);
+
 
   return (
     <div className="search-box">
