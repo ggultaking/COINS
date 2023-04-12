@@ -3,30 +3,30 @@ import "./GroupItem.css";
 
 import { Link } from "react-router-dom";
 
-const GroupItem = ({  groupname, image_url }) => {
-
+const GroupItem = ({id, groupname, image_url }) => {
+  
   return (
-    <article className="coin-group">
-      <div className="coin-group__info">
-        <ul>
-          <li> 
- 
+    <article  >
+      <div>
+        <ul   >
+          <li  className="coin-group__info">
+
             <h1 className="coin-group_name">{groupname}</h1>
-            <Link to="/listpage" className="coin-group__show-button">
+            <Link to={`/listpage/${id}`} className="coin-group__show-button">
               Show all &gt;
             </Link>
             <img
               className="coin-group__image"
-              src={image_url}
+              src={`https://docs.google.com/uc?id=${image_url}`}
               alt={groupname}
-              crossOrigin="anonymous" 
+
             />
-   
+
           </li>
         </ul>
-        
+
       </div>
-      
+
     </article>
   );
 };

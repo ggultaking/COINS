@@ -12,7 +12,7 @@ const App = () => {
     <div className="app">
 
           <Route path="/" exact component={MainPage} />
-          <Route path="/listpage" exact component={ListPage} />
+          <Route path="/listpage:id" exact component={ListPage} />
           <Route path="/descriptionpage" exact component={DescriptionPage} />
       
     </div>

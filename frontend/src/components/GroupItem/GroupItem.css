@@ -5,20 +5,21 @@
     line-height: 16px;
     font-weight: 300;
 }
-.coin-group{
-    display: flex;
- 
-}
+
 .coin-group__info{
     margin-right: 190px;
     display: flex;
     align-items: flex-start;
     flex-direction: column;
+    
+
+
 }
-.coin-group__info h1{
+.coin-group_name{
     font-size: 28px;
     line-height: 28px;
     font-weight: 500;
+    width: 300px;
 }
 .coin-group__image{
     margin-top: 10px;

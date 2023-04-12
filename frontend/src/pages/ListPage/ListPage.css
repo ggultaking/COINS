@@ -1,81 +1,29 @@
 .list-page{
     padding: 52px;
 }
-.coin-group__back__button{
-    font-size: 14px;
-    line-height: 16px;
-    font-weight: 500;
-    color: #B1ABAB;
+
+  .coins{
     display: flex;
-    margin-bottom: 16px;
-}
-
-
-.advanced-filter{
-  
-    display: flex;
-   
-}
-
-.advanced-filter__button__label{
-    font-size: 14px;
-    line-height: 16px;
-    font-weight: 300;
-    margin-right: 16px;
-text-decoration: underline;
-}
-.advanced-filter__button{
-    margin-top: 20px;
-    margin-bottom: 24px;
-    cursor: pointer;
-    border: none;
-    background-color: #FFFFFF;
-}
-.advanced-filter__input{
-    box-sizing: border-box;
-    display: block;
-    font-size: 14px;
-    padding: 5px 10px;
-    margin-top: 12px;
-    margin-bottom: 32px;
-    border: 1px solid rgba(0, 8, 7, .5);
-}
-.maxi__input{
-    width: 374px;
-    height: 48px;
-}
-.mini__input{
-    width: 155px;
-    height: 48px;
-    margin-left: 10px;
-
-
-}
-.advanced-filter__secondTwo{
-margin-left: 32px;
-}
-.advanced-filter__label{
-    font-size: 14px;
-    line-height: 16px;
-    font-weight: 500;
-  
-}
-.secondTwo__component{
-    display: flex;
+    justify-content: space-between;
+  }
+  .coin_name{
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 700;
+    color: #833AE0;
     
-}
-.advanced-filter__subLabel{
-   
- display: flex;
-   
   }
-  .mini__label{
-    font-size: 14px;
+  .description_s{
+    font-size: 12px;
     line-height: 16px;
-    font-weight: 300;
-   
-    margin-top: 30px;
+    font-weight: 400;
   }
-  .mini__label-to{
-    margin-left: 20px;
+  .coin_image{
+    width: 120px;
+    height: 120px;
+  }
+  .coins_container{
+    display: flex;
+    flex-wrap: wrap;
+    height: 420px;
   }

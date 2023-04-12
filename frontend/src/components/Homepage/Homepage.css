@@ -59,4 +59,5 @@
 }
 .coins-container{
     margin-top: 85px;
+    display: flex;
 }
