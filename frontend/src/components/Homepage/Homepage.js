@@ -53,12 +53,16 @@ const Homepage = () => {
       <div className="coins-container">
         {coingroup &&
           coingroup.map((res) => (
-            <GroupItem
+         
+       
+              <GroupItem
               key={res.id}
               id={res.id}
               groupname={res.groupname}
               image_url={res.image_url}
             />
+            
+           
           ))}
       </div>
       <Link to="/descriptionpage">GO TO DESCRIPTION</Link>

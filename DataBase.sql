@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `coins` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `coins`;
 -- MySQL dump 10.13  Distrib 8.0.32, for Win64 (x86_64)
 --
 -- Host: localhost    Database: coins
@@ -38,7 +36,7 @@ CREATE TABLE `coingroup` (
 
 LOCK TABLES `coingroup` WRITE;
 /*!40000 ALTER TABLE `coingroup` DISABLE KEYS */;
-INSERT INTO `coingroup` VALUES (1,'Bullion coins','https://mega.nz/file/3BoTWR6T#mERQTxbyCeYCW_zBePztwMZN1BQ9zGs9nUvmZqH9H0U'),(2,'Exclusive coins','https://mega.nz/file/7UISBYiZ#UMAylpXtepad9H23C5zFx2A7AI5X_m7qQUy1qenmSyw'),(3,'Commemorative coins','https://mega.nz/file/PYwSTQZJ#yecjo_ocOgFEhH0Fu-_IHrY2V_RE1mpLF16TTcN48FM');
+INSERT INTO `coingroup` VALUES (1,'Bullion coins','https://mega.nz/file/3BoTWR6T#mERQTxbyCeYCW_zBePztwMZN1BQ9zGs9nUvmZqH9H0U'),(2,'Exclusive coins','https://mega.nz/file/7UISBYiZ#UMAylpXtepad9H23C5zFx2A7AI5X_m7qQUy1qenmSyw'),(3,'Commemorative coins','https://drive.google.com/file/d/1LYbXHCwVm9VSBUcPg31dwDeN8eiTFXgV/view?usp=share_link');
 /*!40000 ALTER TABLE `coingroup` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -184,4 +182,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-04-11 11:52:03
+-- Dump completed on 2023-04-12 10:16:24

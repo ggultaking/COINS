@@ -19,6 +19,7 @@ const GroupItem = ({  groupname, image_url }) => {
               className="coin-group__image"
               src={image_url}
               alt={groupname}
+              crossOrigin="anonymous" 
             />
    
           </li>
