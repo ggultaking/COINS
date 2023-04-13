@@ -1,7 +1,6 @@
-export const ADD_FILM='ADD_FILM'
-export const DELETE_FILM='DELETE_FILM'
-export const LIST_NAME='LIST_NAME'
-export const SEARCH_GROUP='SEARCH_FILM'
+
+export const SEARCH_GROUP='SEARCH_GROUP'
+export const SEARCH_COIN='SEARCH_COIN'
 export const DELETE_ALL='DELETE_ALL'
 export const SHOW_UP='SHOW_UP'
 export const SHOW_BELOW='SHOW_BELOW'

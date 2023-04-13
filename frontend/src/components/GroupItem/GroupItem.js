@@ -7,7 +7,7 @@ const GroupItem = ({id, groupname, image_url }) => {
   
   return (
     <article  >
-      <div>
+ 
         <ul   >
           <li  className="coin-group__info">
 
@@ -25,7 +25,7 @@ const GroupItem = ({id, groupname, image_url }) => {
           </li>
         </ul>
 
-      </div>
+
 
     </article>
   );

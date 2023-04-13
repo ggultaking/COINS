@@ -1,0 +1,18 @@
+
+.coin_name{
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 700;
+    color: #833AE0;
+    
+  }
+  .description_s{
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 400;
+  }
+  .coin_image{
+    width: 120px;
+    height: 120px;
+  }
+  

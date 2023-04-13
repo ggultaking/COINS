@@ -8,13 +8,25 @@ const connection = mysql.createConnection({
   password: "Gulu19961211",
   database: "coins",
 });
-
-app.get("/allgroups", (req, res) => {
-  const query = "SELECT id, groupname, image_url FROM coingroup";
+app.get("/grouplist", (req, res) => {
+  const query = "SELECT c.coin_name,c.gorup_id,c.description_s,i.image_url_front FROM coins as c inner join images as i where c.image_id=i.id";
   connection.query(query, (err, result) => {
     if (err) {
-      console.error(err);
+  
       res.status(500).send("Error retrieving data from database");
+      throw err;
+    } else {
+      res.json(result);
+    }
+  });
+});
+app.get("/allgroups", (req, res) => {
+  const query = "SELECT * FROM coingroup";
+  connection.query(query, (err, result) => {
+    if (err) {
+  
+      res.status(500).send("Error retrieving data from database");
+      throw err;
     } else {
       res.json(result);
     }

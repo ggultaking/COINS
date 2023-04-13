@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+
 import "./Homepage.css";
 import { useDispatch } from "react-redux";
 import { searchGroupAction } from "../../redux/searchCoin/searchAction";
@@ -61,7 +61,7 @@ const Homepage = () => {
             />
           ))}
       </div>
-      <Link to="/descriptionpage">GO TO DESCRIPTION</Link>
+
     </div>
   );
 };
