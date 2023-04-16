@@ -24,7 +24,7 @@ const Homepage = () => {
     fetch("/allgroups")
       .then((res) => res.json())
       .then((data) => dispatch(searchGroupAction(data)));
-  }, [dispatch]);
+  }, []);
   return (
     <div className="search-box">
       <div className="search-box__header">

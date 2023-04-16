@@ -1,28 +1,44 @@
 import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
 import { useParams, Link } from "react-router-dom";
 
-import { searchCoinAction } from "../../redux/searchCoin/searchAction";
 import AdvanceFilter from "../../components/AdvanceFilter/AdvanceFilter";
 import "./ListPage.css";
 import CoinItem from "../../components/CoinItem/CoinItem";
 
 const ListPage = () => {
   const { id } = useParams();
-  const coins = useSelector((store) => store.coinsReducer.coins);
-  const filteredCoins = coins.filter((coin) => coin.groupId === id);
+  const [oneGroup, setGroup] = useState([]);
   const [searchLine, setSearchLine] = useState("");
   const searchLineChangeHandler = (e) => {
     setSearchLine(e.target.value);
   };
 
-  const dispatch = useDispatch();
-
   useEffect(() => {
-    fetch("/grouplist")
-      .then((res) => res.json())
-      .then((data) => dispatch(searchCoinAction(data)));
-  }, [dispatch]);
+    fetch(`/grouplist/${id}`)
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error("Error retrieving data from the server");
+        }
+        return res.json();
+      })
+      .then((data) => setGroup(data))
+      .catch((err) => console.log(err.message));
+  }, [id]);
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    fetch(`/coin/${id}?search=${searchLine}`)
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error("Error retrieving data from the server");
+        }
+        return res.json();
+      })
+      .then((data) => setGroup(data))
+      .catch((err) => console.log(err.message));
+  };
+
+
   return (
     <div className="list-page">
       <div className="search-box">
@@ -34,7 +50,7 @@ const ListPage = () => {
           <p>--List of the coins</p>
         </div>
 
-        <div className="search-box__form">
+        <div className="search-box__form" >
           <label className="search-box__form-label">
             Input field
             <input
@@ -48,29 +64,26 @@ const ListPage = () => {
             type="submit"
             className="search-box__form-submit"
             disabled={!searchLine}
+            onClick={handleSearch}
           >
             Search
           </button>
         </div>
       </div>
       <AdvanceFilter />
-      <div className="coins_container">
-        <ul>
-          {filteredCoins.map((coin) => (
-            <li key={coin.group_id}>
-              {coin &&
-                coin.map((res) => (
-                  <CoinItem
-                    key={res.id}
-                    coin_name={res.coin_name}
-                    image_url={res.image_url_front}
-                  />
-                ))}
-            </li>
-          ))}
-        </ul>
+      <div >
+        {oneGroup&& (
+          <ul className="coins_container">
+            {oneGroup.map((coin) => (
+              <li key={coin.id}>
+                <CoinItem {...coin} />
+              </li>
+            ))}
+          </ul>
+        ) }
       </div>
     </div>
   );
 };
+
 export default ListPage;

@@ -1,17 +1,39 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useParams, Link } from "react-router-dom";
 import "./DescriptionPage.css";
-import { Link } from "react-router-dom";
+
 const DescriptionPage = () => {
+  const { id } = useParams();
+  const [oneCoin, setOneCoin] = useState([]);
+
+  useEffect(() => {
+    fetch(`/coin/${id}`)
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error("Error retrieving data from the server");
+        }
+        return res.json();
+      })
+      .then((data) => setOneCoin(data))
+      .catch((err) => console.log(err.message));
+  }, [id]);
+
   return (
     <div className="description-page">
       <div className="description__image">
-        <img alt="Coin front"></img>
-        <img alt="Coin back"></img>
+        <img
+          alt="Coin front"
+          src={`https://docs.google.com/uc?id=${oneCoin.image_url_front}`}
+        ></img>
+        <img
+          alt="Coin back"
+          src={`https://docs.google.com/uc?id=${oneCoin.image_url_back}`}
+        ></img>
       </div>
       <div className="description__part">
-        <h1 className="description-page__title">sd</h1>
-        <p className="description-page__text__s">sfs</p>
-        <p className="description-page__text__l">sfsf</p>
+        <h1 className="description-page__title">{oneCoin.coin_name}</h1>
+        <p className="description-page__text__s">{oneCoin.description_s}</p>
+        <p className="description-page__text__l">{oneCoin.description_l}</p>
         <div className="description-list">
           <ul className="description-list__name">
             <li>Issuing Country</li>
@@ -22,14 +44,19 @@ const DescriptionPage = () => {
             <li>Weight</li>
             <li>Price</li>
           </ul>
+          {oneCoin && (
+            <ul className="description-list__value">
+              <li>{oneCoin.country}</li>
+              <li>{oneCoin.composition}</li>
+              <li>{oneCoin.quality}</li>
+              <li>{oneCoin.denomination}</li>
+              <li>{oneCoin.year}</li>
+              <li>{oneCoin.weight_g}</li>
+              <li>{oneCoin.price_$}</li>
+            </ul>
+          )}
         </div>
-
-        <ul className="description-list__value">
-          <li></li>
-        </ul>
-
-        <div></div>
-        <Link to="/listpage">Back to list</Link>
+        <Link to={`/listpage/${oneCoin.group_id}`}>Back to list</Link>
       </div>
     </div>
   );
