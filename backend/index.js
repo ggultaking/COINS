@@ -11,7 +11,7 @@ const connection = mysql.createConnection({
 app.get("/coin/:id", (req, res) => {
   const { id } = req.params;
   const query = `
-  SELECT coins.id,coins.coin_name,images.image_url_front, images.image_url_back, coingroup.groupname, composition.composition, country.country, quality.quality
+  SELECT *
 FROM coins 
 JOIN images ON coins.image_id = images.id
 JOIN coingroup on coins.gorup_id=coingroup.id

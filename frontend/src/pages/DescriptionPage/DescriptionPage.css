@@ -1,23 +1,49 @@
 .description-page {
+    display: flex;
     padding: 42px calc(50% - 300px);
+
 }
 
 .description-page__title {
     font-size: 34px;
     margin-bottom: 26px;
 }
-
+.description-page__text__l{
+    margin-top: 20px;
+}
 .description-list__name li:nth-child(2n+1) {
    background-color: white;
+   border-right: 1px solid  #C4C4C480;
 }
 .description-list__name li:nth-child(2n){
     background-color:  #C4C4C480;
 }
+.description-list__value li:nth-child(2n+1) {
+    background-color: white;
+ }
+ .description-list__value li:nth-child(2n){
+     background-color:  #C4C4C480;
+ }
+ .description-list__name,.description-list__value li{
+    width:  180px
+ }
 .description__part{
     background-color:  #C4C4C480;
+    padding-left: 44px;
+    padding-right: 44px;
+    padding-top: 20px;
+    padding-bottom: 20px;
     
 }
 .description-list{
-    display: flex;
-    justify-content: space-between;
+margin-top: 40px;
+display: flex;
+}
+
+.description__image{
+    width: 300px;
+    height: 300px;
+}
+.back__link{
+    margin-top: 144px;
 }
