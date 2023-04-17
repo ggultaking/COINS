@@ -60,7 +60,7 @@ const DescriptionPage = () => {
           )}
         </div>
         <div className="back__link">
-        <Link  to={`/listpage/${oneCoin.group_id}`}>Back to list</Link>
+        <Link  to={`/listpage/${oneCoin.id}`}>Back to list</Link>
         </div>
        
       </div>
