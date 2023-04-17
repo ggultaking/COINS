@@ -1,11 +1,11 @@
 import React from "react";
 import "./CoinItem.css";
 
-import { Link } from "react-router-dom";
+
 
 const CoinItem = ({ id, group_id, coin_name, image_url_front, description_s }) => {
   return (
-    <Link to={`/descriptionpage/${id}`}>
+
   
         <div className="coin_item">
           <img
@@ -19,7 +19,7 @@ const CoinItem = ({ id, group_id, coin_name, image_url_front, description_s }) =
           </div>
        
       </div>
-    </Link>
+
   );
 };
 

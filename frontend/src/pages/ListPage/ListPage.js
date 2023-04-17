@@ -76,7 +76,10 @@ const ListPage = () => {
           <ul className="coins_container">
             {oneGroup.map((coin) => (
               <li key={coin.id}>
-                <CoinItem {...coin} />
+                    <Link to={`/descriptionpage/${coin.id}`}>
+                    <CoinItem {...coin} />
+                    </Link>
+        
               </li>
             ))}
           </ul>
