@@ -1,12 +1,20 @@
+
 .description-page {
     display: flex;
-    padding: 42px calc(50% - 300px);
+    padding: 42px calc(50% - 400px);
 
 }
 
 .description-page__title {
-    font-size: 34px;
+    font-size: 28px;
+    line-height: 32px;
+    font-weight: 700;
     margin-bottom: 26px;
+}
+.description__text{
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 400;
 }
 .description-page__text__l{
     margin-top: 20px;
@@ -24,8 +32,13 @@
  .description-list__value li:nth-child(2n){
      background-color:  #C4C4C480;
  }
- .description-list__name,.description-list__value li{
-    width:  180px
+ .description-list__name li,.description-list__value li{
+    width:  180px;
+    height: 20px;
+    padding: 6px;
+    font-size: 10px;
+    line-height: 12px;
+    font-weight: 400;
  }
 .description__part{
     background-color:  #C4C4C480;
@@ -33,6 +46,8 @@
     padding-right: 44px;
     padding-top: 20px;
     padding-bottom: 20px;
+ 
+   
     
 }
 .description-list{
@@ -43,7 +58,14 @@ display: flex;
 .description__image{
     width: 300px;
     height: 300px;
+    margin-right: 40px;
+}
+.image_front{
+    margin-bottom: 36px;
 }
 .back__link{
     margin-top: 144px;
+    font-size: 10px;
+    line-height: 12px;
+    font-weight: 400;
 }

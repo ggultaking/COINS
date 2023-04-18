@@ -33,10 +33,13 @@ WHERE coins.id =${id}
 app.get("/grouplist/:id", (req, res) => {
   const { id } = req.params;
   const query = `
-  SELECT *
+  SELECT coins.id, coins.coin_name, coins.gorup_id, coins.description_s, images.image_url_front,country.country,composition.composition,quality.quality 
   FROM coins 
-  INNER JOIN images ON coins.image_id = images.id
-  WHERE coins.gorup_id = ${id}
+  JOIN images ON coins.image_id = images.id 
+  JOIN country ON coins.country_id=country.id
+  JOIN composition ON coins.composition_id=composition.id
+  JOIN quality ON coins.quality.id=quality.id
+  WHERE coins.gorup_id =${id};
   `;
   connection.query(query, (err, result) => {
     if (err) {
@@ -62,7 +65,21 @@ app.get("/allgroups", (req, res) => {
 });
 
 app.get("/search", (req, res) => {
-  const query = `SELECT id, groupname, image_url FROM coingroup WHERE groupname LIKE '%${req.query.query}%'`;
+  const query = `SELECT * FROM coingroup WHERE groupname LIKE '${req.query.query}%'`;
+  connection.query(query, (err, result) => {
+    if (err) {
+      res.status(500).send("Error retrieving data from database");
+      throw err;
+    } else {
+      res.json(result);
+    }
+  });
+});
+app.get("/searchcoin", (req, res) => {
+  const query = `SELECT coins.id, coins.coin_name, coins.gorup_id, coins.description_s, images.image_url_front 
+  FROM coins 
+  JOIN images ON coins.image_id = images.id 
+  WHERE coins.coin_name LIKE '${req.query.query}%'`;
   connection.query(query, (err, result) => {
     if (err) {
       res.status(500).send("Error retrieving data from database");

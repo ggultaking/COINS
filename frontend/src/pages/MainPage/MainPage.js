@@ -1,6 +1,6 @@
 import React from 'react';
 import './MainPage.css';
-import Homepage from '../../components/Homepage/Homepage';
+import Homepage from '../Homepage/Homepage';
 
 
 const MainPage =()=> {

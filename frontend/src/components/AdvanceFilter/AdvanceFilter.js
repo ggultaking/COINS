@@ -5,8 +5,21 @@ import {
   showUpAction,
   showBelowAction,
 } from "../../redux/searchCoin/searchAction";
+import { useState } from "react";
+
 
 const AdvanceFilter = () => {
+
+
+
+  const [searchMiniLine, setSearchMiniLine] = useState("");
+
+  const searchLineChange= (e) => {
+    setSearchMiniLine(e.target.value);
+  };
+
+
+
   const showUpButton = useSelector((store) => store.searchReducer.showUp);
   const showBelowButton = useSelector(
     (store) => store.searchReducer.showBelow
@@ -19,6 +32,8 @@ const AdvanceFilter = () => {
   const showBelow = () => {
     dispatch(showBelowAction());
   };
+
+
   return (
     <div>
       {showUpButton && (
@@ -42,24 +57,24 @@ const AdvanceFilter = () => {
           <div className="advanced-filter__firstThree">
             <label className="advanced-filter__label">
               Issuing country
-              <input
-                className="advanced-filter__input maxi__input"
+              <select
+                className="advanced-filter__select maxi__select"
                 type="text"
-              ></input>
+              ></select>
             </label>
             <label className="advanced-filter__label">
               Metal
-              <input
-                className="advanced-filter__input maxi__input"
+              <select
+                className="advanced-filter__select maxi__select"
                 type="text"
-              ></input>
+              ></select>
             </label>
             <label className="advanced-filter__label">
               Quality of the coin
-              <input
-                className="advanced-filter__input maxi__input"
+              <select
+                className="advanced-filter__select maxi__select"
                 type="text"
-              ></input>
+              ></select>
             </label>
           </div>
           <div className="advanced-filter__secondTwo">
@@ -69,16 +84,18 @@ const AdvanceFilter = () => {
                 <span className="mini__label">from</span>
 
                 <input
-                  className="advanced-filter__input mini__input"
-                  type="text"
+                  className="advanced-filter__select mini__input"
+                  type="number"
+                  onChange={searchLineChange}
                 ></input>
               </label>
               <label className="advanced-filter__subLabel">
                 <span className="mini__label mini__label-to">to</span>
 
                 <input
-                  className="advanced-filter__input mini__input"
-                  type="text"
+                  className="advanced-filter__select mini__input"
+                  type="number"
+                  onChange={searchLineChange}
                 ></input>
               </label>
             </div>
@@ -89,8 +106,9 @@ const AdvanceFilter = () => {
                 <span className="mini__label">from</span>
 
                 <input
-                  className="advanced-filter__input mini__input"
-                  type="text"
+                  className="advanced-filter__select mini__input"
+                  type="number"
+                  onChange={searchLineChange}
                 ></input>
               </label>
               <label className="advanced-filter__subLabel">
@@ -98,10 +116,19 @@ const AdvanceFilter = () => {
 
                 <input
                   className="advanced-filter__input mini__input"
-                  type="text"
+                  type="number"
+                  onChange={searchLineChange}
                 ></input>
               </label>
+             
             </div>
+            <button
+            type="submit"
+            className="search-box__form-advance"
+            disabled={!searchMiniLine}
+          >
+           Advance Search
+          </button>
           </div>
         </div>
       )}

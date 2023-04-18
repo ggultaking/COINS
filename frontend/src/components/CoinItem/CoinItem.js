@@ -3,7 +3,7 @@ import "./CoinItem.css";
 
 
 
-const CoinItem = ({ id, group_id, coin_name, image_url_front, description_s }) => {
+const CoinItem = ({ id, image_id, coin_name, image_url_front, description_s }) => {
   return (
 
   
@@ -14,6 +14,7 @@ const CoinItem = ({ id, group_id, coin_name, image_url_front, description_s }) =
             alt={coin_name}
           />
           <div className="coin_info">
+            
             <h1 className="coin_name">{coin_name}</h1>
             <p className="description_s">{description_s}</p>
           </div>

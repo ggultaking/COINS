@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
-
 import AdvanceFilter from "../../components/AdvanceFilter/AdvanceFilter";
 import "./ListPage.css";
 import CoinItem from "../../components/CoinItem/CoinItem";
-
 const ListPage = () => {
+  const [searchCoin, setSearchResults] = useState([]);
+
   const { id } = useParams();
   const [oneGroup, setGroup] = useState([]);
   const [searchLine, setSearchLine] = useState("");
+
   const searchLineChangeHandler = (e) => {
     setSearchLine(e.target.value);
   };
@@ -25,20 +26,19 @@ const ListPage = () => {
       .catch((err) => console.log(err.message));
   }, [id]);
 
-  const handleSearch = (e) => {
-    e.preventDefault();
-    fetch(`/coin/${id}?search=${searchLine}`)
+  const searchHandler = () => {
+    fetch(`/searchcoin?query=${searchLine}`)
       .then((res) => {
         if (!res.ok) {
           throw new Error("Error retrieving data from the server");
         }
         return res.json();
       })
-      .then((data) => setGroup(data))
+      .then((data) => setSearchResults(data))
       .catch((err) => console.log(err.message));
   };
-
-
+  
+  const coinsToShow = searchCoin.length ? searchCoin : oneGroup;
   return (
     <div className="list-page">
       <div className="search-box">
@@ -64,7 +64,7 @@ const ListPage = () => {
             type="submit"
             className="search-box__form-submit"
             disabled={!searchLine}
-            onClick={handleSearch}
+         onClick={searchHandler}
           >
             Search
           </button>
@@ -72,18 +72,17 @@ const ListPage = () => {
       </div>
       <AdvanceFilter />
       <div >
-        {oneGroup&& (
-          <ul className="coins_container">
-            {oneGroup.map((coin) => (
-              <li key={coin.id}>
-                    <Link to={`/descriptionpage/${coin.id}`}>
-                    <CoinItem {...coin} />
-                    </Link>
-        
-              </li>
-            ))}
-          </ul>
-        ) }
+      {coinsToShow && (
+      <ul className="coins_container">
+        {coinsToShow.map((coin) => (
+          <li key={coin.id}>
+            <Link to={`/descriptionpage/${coin.id}`}>
+              <CoinItem {...coin} />
+            </Link>
+          </li>
+        ))}
+      </ul>
+    )}
       </div>
     </div>
   );

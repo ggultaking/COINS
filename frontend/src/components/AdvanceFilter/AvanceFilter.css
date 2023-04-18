@@ -28,16 +28,16 @@ text-decoration: underline;
     border: none;
     background-color: #FFFFFF;
 }
-.advanced-filter__input{
+.advanced-filter__select{
     box-sizing: border-box;
     display: block;
     font-size: 14px;
-    padding: 5px 10px;
+    padding: 16px;
     margin-top: 12px;
     margin-bottom: 32px;
     border: 1px solid rgba(0, 8, 7, .5);
 }
-.maxi__input{
+.maxi__select{
     width: 374px;
     height: 48px;
 }
@@ -76,3 +76,29 @@ margin-left: 32px;
   .mini__label-to{
     margin-left: 20px;
   }
+  .search-box__form-advance {
+    width:120px;
+    height:48px;
+    background-color:  #833AE0;
+    color: #FFFFFF;
+    font-size: 14px;
+    line-height: 16px;
+    text-align: center;
+    border: none;
+    transition: all 0.2s linear;
+    margin-left: 150px;
+    margin-top: 28px;
+}
+
+.search-box__form-advance:hover:not(:disabled) {
+    opacity: 0.8;
+    cursor: pointer;
+    transition: all 0.2s linear;
+    
+   
+}
+
+.search-box__form-advance:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}

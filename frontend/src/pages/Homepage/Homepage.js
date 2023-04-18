@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import "./Homepage.css";
 import { useDispatch } from "react-redux";
 import { searchGroupAction } from "../../redux/searchCoin/searchAction";
-import GroupItem from "../GroupItem/GroupItem";
+import GroupItem from "../../components/GroupItem/GroupItem";
 const Homepage = () => {
   const [searchLine, setSearchLine] = useState("");
   const dispatch = useDispatch();

@@ -23,7 +23,7 @@ const DescriptionPage = () => {
   return (
     <div className="description-page">
       <div className="description__image__container">
-        <img className="description__image"
+        <img className="description__image image_front"
           alt="Coin front"
           src={`https://docs.google.com/uc?id=${oneCoin.image_url_front}`}
         ></img>
@@ -34,9 +34,8 @@ const DescriptionPage = () => {
       </div>
       <div className="description__part">
         <h1 className="description-page__title">{oneCoin.coin_name}</h1>
-        <p className="description-page__text__s">{oneCoin.description_s}</p>
-       
-        <p className="description-page__text__l">{oneCoin.description_l}</p>
+        <p className="description-page__text__s description__text">{oneCoin.description_s}</p>
+        <p className="description-page__text__l description__text">{oneCoin.description_l}</p>
         <div className="description-list">
           <ul className="description-list__name">
             <li>Issuing Country</li>
