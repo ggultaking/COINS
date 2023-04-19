@@ -1,19 +1,32 @@
 import React from "react";
-import { useSelector, useDispatch } from "react-redux";
-import "./AvanceFilter.css"
+import { useSelector, useDispatch} from "react-redux";
+import { useParams } from "react-router-dom";
+import { useEffect } from "react";
+import "./AdvanceFilter.css"
 import {
   showUpAction,
   showBelowAction,
 } from "../../redux/searchCoin/searchAction";
 import { useState } from "react";
+import CoinItem from "../CoinItem/CoinItem";
+import { Link } from "react-router-dom";
 
 
 const AdvanceFilter = () => {
 
 
+  const { price_from} = useParams();
+  const { price_to} = useParams();
+  const { year_from} = useParams();
+  const { year_to} = useParams();
 
+  const [searchCoin, setSearchResults] = useState([]);
+  const [oneAGroup, setAGroup] = useState([]);
+  const { id } = useParams();
   const [searchMiniLine, setSearchMiniLine] = useState("");
-
+  const [uniqueCountries, setUniqueCountries] = useState([]);
+  const [uniqueCompositions, setUniqueCompositions] = useState([]);
+  const [uniqueQualities, setUniqueQualities] = useState([]);
   const searchLineChange= (e) => {
     setSearchMiniLine(e.target.value);
   };
@@ -32,8 +45,38 @@ const AdvanceFilter = () => {
   const showBelow = () => {
     dispatch(showBelowAction());
   };
-
-
+  const searchAHandler = () => {
+    fetch(`/advancefilter/${price_from}/${price_to}/${year_from}/${year_to}`)
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error("Error retrieving data from the server");
+        }
+        return res.json();
+      })
+      .then((data) => setSearchResults(data))
+      .catch((err) => console.log(err.message));
+  };
+  
+  useEffect(() => {
+    fetch(`/grouplist/${id}`)
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error("Error retrieving data from the server");
+        }
+        return res.json();
+      })
+      .then((data) => 
+      {     
+        const countries = [...new Set(data.map((coin) => coin.country))];
+        const compositions = [...new Set(data.map((coin) => coin.composition))];
+        const qualities = [...new Set(data.map((coin) => coin.quality))];
+        setUniqueCountries(countries);
+        setUniqueCompositions(compositions);
+        setUniqueQualities(qualities);
+        setAGroup(data)})
+      .catch((err) => console.log(err.message));
+  }, [id]);
+  const coinsToShow = searchCoin.length ? searchCoin : oneAGroup;
   return (
     <div>
       {showUpButton && (
@@ -60,21 +103,27 @@ const AdvanceFilter = () => {
               <select
                 className="advanced-filter__select maxi__select"
                 type="text"
-              ></select>
+              > {uniqueCountries.map((country) => (
+                <option key={country}>{country}</option>
+              ))}</select>
             </label>
             <label className="advanced-filter__label">
               Metal
               <select
                 className="advanced-filter__select maxi__select"
                 type="text"
-              ></select>
+              >{uniqueCompositions.map((composition) => (
+                <option key={composition}>{composition}</option>
+              ))}</select>
             </label>
             <label className="advanced-filter__label">
               Quality of the coin
               <select
                 className="advanced-filter__select maxi__select"
                 type="text"
-              ></select>
+              > {uniqueQualities.map((quality) => (
+                <option key={quality}>{quality}</option>
+              ))}</select>
             </label>
           </div>
           <div className="advanced-filter__secondTwo">
@@ -115,7 +164,7 @@ const AdvanceFilter = () => {
                 <span className="mini__label mini__label-to">to</span>
 
                 <input
-                  className="advanced-filter__input mini__input"
+                  className="advanced-filter__select mini__input"
                   type="number"
                   onChange={searchLineChange}
                 ></input>
@@ -126,6 +175,7 @@ const AdvanceFilter = () => {
             type="submit"
             className="search-box__form-advance"
             disabled={!searchMiniLine}
+            onClick={searchAHandler}
           >
            Advance Search
           </button>
@@ -133,6 +183,19 @@ const AdvanceFilter = () => {
         </div>
       )}
     </div>
+    ,
+    <div> {coinsToShow && (
+      <ul className="coins_container">
+        {coinsToShow.map((coin) => (
+          <li key={coin.id}>
+            <Link to={`/descriptionpage/${coin.id}`}>
+              <CoinItem {...coin} />
+            </Link>
+          </li>
+        ))}
+      </ul>
+    )}</div>
   );
+
 };
 export default AdvanceFilter

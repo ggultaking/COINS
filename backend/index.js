@@ -51,7 +51,30 @@ app.get("/grouplist/:id", (req, res) => {
     }
   });
 });
-
+app.get("/advancefilter/:price_from/:price_to/:year_from/:year_to", (req, res) => {
+  const { price_from} = req.params;
+  const { price_to} = req.params;
+  const { year_from} = req.params;
+  const { year_to} = req.params;
+  const query = `
+  SELECT coins.id, coins.coin_name,coins.year, coins.price_$,coins.gorup_id, coins.description_s, images.image_url_front,country.country,composition.composition,quality.quality 
+  FROM coins 
+  JOIN images ON coins.image_id = images.id 
+  JOIN country ON coins.country_id=country.id
+  JOIN composition ON coins.composition_id=composition.id
+  JOIN quality ON coins.quality.id=quality.id
+  WHERE price_$ between ${price_from} and ${price_to} and year between ${year_from} and ${year_to};
+  `;
+  connection.query(query, (err, result) => {
+    if (err) {
+      res.status(500).send("Error retrieving data from database");
+      throw err;
+    } else {
+      res.json(result);
+      
+    }
+  });
+});
 app.get("/allgroups", (req, res) => {
   const query = "SELECT * FROM coingroup";
   connection.query(query, (err, result) => {

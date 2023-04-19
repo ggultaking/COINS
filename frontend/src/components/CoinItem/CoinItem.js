@@ -3,7 +3,7 @@ import "./CoinItem.css";
 
 
 
-const CoinItem = ({ id, image_id, coin_name, image_url_front, description_s }) => {
+const CoinItem = ({ id, image_id, coin_name,image_url_front, description_s }) => {
   return (
 
   
