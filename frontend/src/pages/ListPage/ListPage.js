@@ -3,7 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import AdvanceFilter from "../../components/AdvanceFilter/AdvanceFilter";
 import "./ListPage.css";
 import CoinItem from "../../components/CoinItem/CoinItem";
-const ListPage = () => {
+const ListPage = (props) => {
   const [searchCoin, setSearchResults] = useState([]);
 
   const { id } = useParams();
@@ -13,6 +13,24 @@ const ListPage = () => {
   const searchLineChangeHandler = (e) => {
     setSearchLine(e.target.value);
   };
+  const [filteredData, setFilteredData] = useState(props.data);
+
+  const handleSearch = (selectedOptions, yearRange, priceRange) => {
+    const [priceFrom, priceTo] = priceRange;
+    const [yearFrom, yearTo] = yearRange;
+    const url = `/advancefilter/${priceFrom}/${priceTo}/${yearFrom}/${yearTo}`;
+  
+    fetch(url)
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error("Error retrieving data from the server");
+        }
+        return res.json();
+      })
+      .then((data) => setFilteredData(data))
+      .catch((err) => console.log(err.message));
+  };
+  
 
   useEffect(() => {
     fetch(`/grouplist/${id}`)
@@ -70,7 +88,7 @@ const ListPage = () => {
           </button>
         </div>
       </div>
-      <AdvanceFilter />
+      <AdvanceFilter onSearch={handleSearch}  />
       <div >
       {coinsToShow && (
       <ul className="coins_container">
